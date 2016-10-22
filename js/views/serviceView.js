@@ -1,25 +1,24 @@
 $(function() {
-  // TODO: define a service view here
+  /**
+   * Backbone View to encapsulate the HTML representation of a single service.
+   */
   
-  // This view turns a Service model into HTML. Will create list <li> elements.
   var ServiceView = Backbone.View.extend({
-    tagName: 'li',
+    tagName: 'li', // each service is a list item (<li></li>) in HTML
 
     events:{
       'click': 'toggleService'
     },
 
-    initialize: function(){
-
-      // Set up event listeners. The change backbone event
-      // is raised when a property changes (like the checked field)
-
+    initialize: function() {
+      // this view listens to all change events on the underlying model and 
+      // re-renders whenever an event fires.
       this.listenTo(this.model, 'change', this.render);
     },
 
-    render: function(){
-
-      // Create the HTML
+    render: function() {
+      // NOTE: this can be made much cleaner using templating services like 
+      // Handlebars or Mustache
 
       this.$el.html('<input type="checkbox" value="1" name="' + this.model.get('title') + '" /> ' + this.model.get('title') + '<span>$' + this.model.get('price') + '</span>');
       this.$('input').prop('checked', this.model.get('checked'));
@@ -29,7 +28,11 @@ $(function() {
       return this;
     },
 
-    toggleService: function(){
+    /**
+     * User defined helper function to toggle the 'checked' attribute of the 
+     * underlying model.
+     */
+    toggleService: function() {
       this.model.toggle();
     }
   });

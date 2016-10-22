@@ -1,5 +1,8 @@
 $(function() {
-  // TODO: link together the models, collections and services!
+  /**
+   * Creates multiple service models, adds them to a single collection, and then
+   * initializes the main AppView.
+   */
   
   console.log('Starting our Backbone application!');
 

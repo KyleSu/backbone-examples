@@ -1,13 +1,17 @@
 $(function() {
-  // TODO: define a service collection here
-  
+  /**
+   * This Backbone collection keeps track of Services (models).
+  */
   var ServiceList = Backbone.Collection.extend({
 
-    // Will hold objects of the Service model
     model: window.Service,
 
-    // Return an array only with the checked services
-    getChecked: function(){
+    /**
+     * User defined helper function to return all models with the attribute 
+     * 'checked' = true
+     * @return {[Models <Iterable>]} Backbone iterable list of Models
+     */
+    getChecked: function() {
       return this.where({checked:true});
     }
   });
